@@ -1,0 +1,22 @@
+{
+  "name": "sequelize-yugabytedb",
+  "version": "1.0.0",
+  "description": "For Making Sequelize compatible with YugabyteDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yugabytedb",
+    "sequelize",
+    "sequelize-yugabytedb",
+    "database",
+    "orm"
+  ],
+  "author": "Sanyam Singhal",
+  "license": "ISC",
+  "dependencies": {
+    "pg": "^8.6.0",
+    "sequelize": "^6.6.5"
+  }
+}

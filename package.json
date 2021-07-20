@@ -2,7 +2,7 @@
   "name": "sequelize-yugabytedb",
   "version": "1.0.0",
   "description": "For Making Sequelize compatible with YugabyteDB",
-  "main": "index.js",
+  "main": "source/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

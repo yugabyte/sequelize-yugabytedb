@@ -18,5 +18,14 @@
   "dependencies": {
     "pg": "^8.6.0",
     "sequelize": "^6.6.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanyamsinghal/sequelize-yugabytedb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sanyamsinghal/sequelize-yugabytedb/issues"
+  },
+  "homepage": "https://github.com/sanyamsinghal/sequelize-yugabytedb#readme"
 }

@@ -1,6 +1,6 @@
 {
   "name": "sequelize-yugabytedb",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "For Making Sequelize compatible with YugabyteDB",
   "main": "source/index.js",
   "scripts": {

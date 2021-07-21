@@ -13,7 +13,7 @@
     "database",
     "orm"
   ],
-  "author": "Sanyam Singhal <ssinghal@yugabyte>",
+  "author": "Sanyam Singhal <ssinghal@yugabyte.com>",
   "license": "ISC",
   "dependencies": {
     "pg": "^8.6.0",

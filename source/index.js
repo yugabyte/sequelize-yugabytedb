@@ -12,7 +12,6 @@ PostgresDialect.prototype.supports.skipLocked = false;
 //It is because rightnow YugabyteDB doesn't provide "details" for the error, because of which Sequelize can't generate the error properly.
 //Corresponding github issue which may resolve this problem: 
 Model.findOrCreate = async function findOrCreate(options) {
-console.log("OUR FINDORCREATE() FUNCTION!!!!!!!!")
 const _ = require('lodash');
 const Utils = require('sequelize/lib/utils');
 const { logger } = require('sequelize/lib/utils/logger');

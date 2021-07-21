@@ -8,9 +8,9 @@ const PostgresDialect = require("sequelize/lib/dialects/postgres");
 //skipLocked is not supported in YugabyteDB
 PostgresDialect.prototype.supports.skipLocked = false;
 
-//In findOrCreate() method err.fields is undefined, modifying the existing function code to manage this
+//In findOrCreate() method errFieldKeys can be undefined in case of errors like UniqueConstraintError, modifying the existing function code to manage this
 //It is because rightnow YugabyteDB doesn't provide "details" for the error, because of which Sequelize can't generate the error properly.
-//Corresponding github issue which may resolve this problem: 
+//Corresponding github issue which may resolve this problem: https://github.com/yugabyte/yugabyte-db/issues/9294
 Model.findOrCreate = async function findOrCreate(options) {
 const _ = require('lodash');
 const Utils = require('sequelize/lib/utils');

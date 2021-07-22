@@ -1,6 +1,6 @@
 {
   "name": "sequelize-yugabytedb",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "For Making Sequelize compatible with YugabyteDB",
   "main": "source/index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "orm"
   ],
   "author": "Sanyam Singhal <ssinghal@yugabyte.com>",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "dependencies": {
     "pg": "^8.6.0",
     "sequelize": "^6.6.5"
@@ -22,10 +22,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanyamsinghal/sequelize-yugabytedb.git"
+    "url": "git+https://github.com/yugabyte/sequelize-yugabytedb/issues"
   },
   "bugs": {
-    "url": "https://github.com/sanyamsinghal/sequelize-yugabytedb/issues"
+    "url": "https://github.com/yugabyte/sequelize-yugabytedb/issues"
   },
-  "homepage": "https://github.com/sanyamsinghal/sequelize-yugabytedb#readme"
+  "homepage": "https://github.com/yugabyte/sequelize-yugabytedb#readme"
 }

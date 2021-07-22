@@ -1,8 +1,13 @@
 {
   "name": "sequelize-yugabytedb",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "For Making Sequelize compatible with YugabyteDB",
   "main": "source/index.js",
+  "types": "types",
+  "files": [
+    "source",
+    "types"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,7 +27,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yugabyte/sequelize-yugabytedb/issues"
+    "url": "https://github.com/yugabyte/sequelize-yugabytedb"
   },
   "bugs": {
     "url": "https://github.com/yugabyte/sequelize-yugabytedb/issues"

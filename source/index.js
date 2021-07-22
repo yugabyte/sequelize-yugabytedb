@@ -1,9 +1,9 @@
 "use strict";
 
 
-const { Sequelize, Model, Transaction } = require("sequelize");
+const { Sequelize, Model, Transaction } = require('sequelize');
 
-const PostgresDialect = require("sequelize/lib/dialects/postgres");
+const PostgresDialect = require('sequelize/lib/dialects/postgres');
 
 //skipLocked is not supported in YugabyteDB
 PostgresDialect.prototype.supports.skipLocked = false;
@@ -122,6 +122,8 @@ try {
 // YugabyteDB only supports SNAPSHOT(REPEATABLE_READ) and SERIALIZABLE transaction isolation levels
 Transaction.prototype.ISOLATION_LEVELS = function ISOLATION_LEVELS() {
     return {
+        // READ_UNCOMMITTED: 'READ UNCOMMITTED',
+        // READ_COMMITTED: 'READ COMMITTED',
         REPEATABLE_READ: 'REPEATABLE READ',
         SERIALIZABLE: 'SERIALIZABLE'
       };

@@ -1,0 +1,67 @@
+
+const expect = require('chai').expect
+const Support = require('./support.js')
+const DataTypes = require('../source')
+
+describe('#Some Basic Initial tests', function() {
+    it('authenticate database connection', async function() {
+        await this.sequelize.authenticate();
+    })
+
+    it('create few tables', async function() {
+        this.User = this.sequelize.define('User', {
+            username: DataTypes.STRING,
+            secretValue: DataTypes.STRING,
+            data: DataTypes.STRING,
+          });
+          this.Account = this.sequelize.define('Account', {
+            accountName: DataTypes.STRING
+          });
+          this.Student = this.sequelize.define('Student', {
+            no: { type: DataTypes.INTEGER, primaryKey: true },
+            name: { type: DataTypes.STRING, allowNull: false }
+          });
+      
+          await this.sequelize.sync({ force: true });
+    });
+
+    it('create a table and do bulkCreate() operation', async function() {
+        const User = this.sequelize.define('User', {
+            username: DataTypes.STRING
+        });
+        await User.sync({ force: true });
+        await User.bulkCreate([{ username: 'bob' }, { username: 'rob' }, {username: 'tom'}, {username: 'foo'}, {username: 'bar'}]);
+        const count = await User.count();
+        expect(count).to.equal(5);
+    }); 
+    
+    it('create table, do bulkCreate(), findAll()', async function() {
+        const User = this.sequelize.define('User', {
+            username: DataTypes.STRING
+        });
+        await User.sync({ force: true });
+        await User.bulkCreate([{ username: 'bob' }, { username: 'rob' }, {username: 'tom'}, {username: 'foo'}, {username: 'bar'}]);
+        const count = await User.count();
+        expect(count).to.equal(5);
+
+        const users = await User.findAll();
+        expect(users.length).to.be.equal(5);
+    }); 
+
+    it('create table, insert rows, delete rows', async function() {
+        const User = this.sequelize.define('User', {
+            username: DataTypes.STRING
+        });
+        await User.sync({ force: true });
+        await User.bulkCreate([{ username: 'bob' }, { username: 'rob' }, {username: 'tom'}, {username: 'foo'}, {username: 'bar'}]);
+        
+        const count = await User.count();
+        expect(count).to.equal(5);
+
+        await User.destroy({where: {}});
+        const count2 = await User.count();
+        expect(count2).to.equal(0);
+    });
+    
+
+})

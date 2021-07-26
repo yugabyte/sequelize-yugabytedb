@@ -129,4 +129,4 @@ Transaction.prototype.ISOLATION_LEVELS = function ISOLATION_LEVELS() {
       };
 }
 
-module.exports = Sequelize
+module.exports = require('sequelize')

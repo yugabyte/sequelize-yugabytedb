@@ -31,7 +31,7 @@ function createSequelizeTestInstance() {
     return new Sequelize('test_sequelize', 'yugabyte', '', {
       dialect: 'postgres',
       host: 'localhost',
-      port: '5433', //using the default host and port of sequelize here
+      port: '5433', //using the default host and port of YugabyteDB for sequelize here
       logging: false
     });
 }

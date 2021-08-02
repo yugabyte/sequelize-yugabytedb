@@ -7,11 +7,11 @@ npm install sequelize-yugabytedb
 
 ### Steps to run the tests
 1. Make sure you have a YugabyteDB cluster up and running on your machine. <br/>Note: The tests are assuming the `localhost` and `5433` as default host and port for YugabyteDB cluster.
-2. Create a database `test_sequelize`:
+2. Go to YugabyteDB installation directory and create a database `test_sequelize`:
    ```
-   $ ysqlsh -c "CREATE DATABASE test_sequelize"
+   $ ./bin/ysqlsh -c "CREATE DATABASE test_sequelize"
    ```
-3. Install dependencies by running:
+3. Move back to `sequelize-yugabytedb` directory and install dependencies by running:
    ```
    $ npm install
    ```

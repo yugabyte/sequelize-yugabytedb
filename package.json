@@ -9,7 +9,7 @@
     "types"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/*test.js -t 300000 --reporter spec"
   },
   "keywords": [
     "yugabytedb",
@@ -24,7 +24,10 @@
     "pg": "^8.6.0",
     "sequelize": "^6.6.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/yugabyte/sequelize-yugabytedb"

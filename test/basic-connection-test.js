@@ -1,9 +1,12 @@
-
-const expect = require('chai').expect
+const chai = require('chai')
+const expect = chai.expect
 const Support = require('./support.js')
+const Sequelize = require('../source/index.js')
 const DataTypes = require('../source')
 
-describe('#Some Basic Initial tests', function() {
+chai.use(require('chai-as-promised'))
+
+describe('# Some Basic Initial tests', function() {
     it('authenticate database connection', async function() {
         await this.sequelize.authenticate();
     })
@@ -62,6 +65,62 @@ describe('#Some Basic Initial tests', function() {
         const count2 = await User.count();
         expect(count2).to.equal(0);
     });
-    
+})
 
+describe('Using findOrCreate() method', () => {
+    it('should error correctly when defaults contain a unique key', async function() {
+        const User = this.sequelize.define('user', {
+            objectId: {
+            type: DataTypes.STRING,
+            unique: true
+            },
+            username: {
+            type: DataTypes.STRING,
+            unique: true
+            }
+        });
+
+        await User.sync({ force: true });
+
+        await User.create({
+            username: 'gottlieb'
+        });
+
+        await expect(User.findOrCreate({
+            where: {
+              objectId: 'asdasdasd'
+            },
+            defaults: {
+              username: 'gottlieb'
+            }
+          })).rejectedWith(Sequelize.UniqueConstraintError);
+    })
+
+    it('should be able to findOrCreate a row with the given data', async function() {
+        const User = this.sequelize.define('user', {
+            objectId: {
+            type: DataTypes.STRING,
+            unique: true
+            },
+            username: {
+            type: DataTypes.STRING,
+            unique: true
+            }
+        });
+
+        await User.sync({ force: true });
+
+        await User.create({
+            username: 'gottlieb'
+        });
+
+        await expect(User.findOrCreate({
+            where: {
+              objectId: 'asdasdasd'
+            },
+            defaults: {
+              username: 'gottlieb2'
+            }
+          })).to.be.ok;
+    })
 })

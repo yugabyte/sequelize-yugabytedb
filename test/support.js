@@ -1,6 +1,6 @@
 'use strict';
 
-const Sequelize = require('../source')
+const Sequelize = require('../source/index.js')
 
 async function clearDatabase(sequelize) {
     const qi = sequelize.getQueryInterface();
@@ -11,7 +11,25 @@ async function clearDatabase(sequelize) {
     if (qi.dropAllEnums) {
       await qi.dropAllEnums();
     }
-    //drop schemas code goes here
+    await dropTestSchemas(sequelize);
+}
+
+async function dropTestSchemas(sequelize) {
+  const queryInterface = sequelize.getQueryInterface();
+  if (!queryInterface.queryGenerator._dialect.supports.schemas) {
+    return this.sequelize.drop({});
+  }
+
+  const schemas = await sequelize.showAllSchemas();
+  const schemasPromise = [];
+  schemas.forEach(schema => {
+    const schemaName = schema.name ? schema.name : schema;
+    if (schemaName !== sequelize.config.database) {
+      schemasPromise.push(sequelize.dropSchema(schemaName));
+    }
+  });
+
+  await Promise.all(schemasPromise.map(p => p.catch(e => e)));
 }
 
 before(function() {

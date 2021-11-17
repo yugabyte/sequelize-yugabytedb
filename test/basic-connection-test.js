@@ -68,7 +68,8 @@ describe('# Some Basic Initial tests', function() {
 })
 
 describe('Using findOrCreate() method', () => {
-    it('should error correctly when defaults contain a unique key', async function() {
+    //Re-enable this test case once this bug is fixed - https://github.com/yugabyte/yugabyte-db/issues/10303
+    it.skip('should error correctly when defaults contain a unique key', async function() {
         const User = this.sequelize.define('user', {
             objectId: {
             type: DataTypes.STRING,

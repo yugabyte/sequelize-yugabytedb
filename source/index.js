@@ -3,7 +3,7 @@
 
 const { Sequelize, Model, Transaction } = require('sequelize');
 
-const PostgresDialect = require('sequelize/lib/dialects/postgres');
+const PostgresDialect = require('sequelize/lib/dialects/postgres/index');
 
 //skipLocked is not supported in YugabyteDB
 PostgresDialect.prototype.supports.skipLocked = false;
@@ -13,9 +13,9 @@ PostgresDialect.prototype.supports.skipLocked = false;
 //Corresponding github issue which may resolve this problem: https://github.com/yugabyte/yugabyte-db/issues/9294
 Model.findOrCreate = async function findOrCreate(options) {
 const _ = require('lodash');
-const Utils = require('sequelize/lib/utils');
+const Utils = require('sequelize/lib/utils.js');
 const { logger } = require('sequelize/lib/utils/logger');
-const sequelizeErrors = require('sequelize/lib/errors');
+const sequelizeErrors = require('sequelize/lib/errors/index');
 if (!options || !options.where || arguments.length > 1) {
     throw new Error(
     'Missing where attribute in the options parameter passed to findOrCreate. ' +
